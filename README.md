@@ -1,4 +1,4 @@
-# 🏹 Python RPG Adventure
+# 🏹 OldDragon -- RPG
 
 ![RPG Banner](https://img.shields.io/badge/RPG-Python-blue?style=for-the-badge)
 
@@ -21,4 +21,4 @@ O jogo foi desenvolvido para **diversão e aprendizado de Python**, utilizando p
 
 1️⃣ Clone o repositório:  
 ```bash
-git clone https://github.com/seu-usuario/python-rpg.git
+git clone https://github.com/CaleffiGuilherme/OldDragon---RPG
