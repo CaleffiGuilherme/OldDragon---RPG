@@ -1,18 +1,68 @@
-Orientações: 
+Instructions: 
 
-Utilize o livro de regras para entender os requisitos.
-Desenvolva utilizando paradigmas de orientação a objetos em python
-Desenvolva as três formas de distribuição de atributos disponíveis na página 14: Estilo clássico; estilo aventureiro; estilo heróico.
+Use the rulebook to understand the requirements.
+Develop using object-oriented paradigms in Python
+Develop the three forms of attribute distribution available on page 14: Classic style; Adventurer style; Heroic style.
 
+=== NEW CHARACTER CREATION SYSTEM ===
 
-Critérios de avaliação:
+The game now includes a complete character creation system with:
 
-Utilizar a orientação a objetos para organizar o código, classes com papéis específicos, funções (métodos) que possuam responsabilidades únicas e claras. (Valor 0.2)
-Utilizar linguagem python (Requisito obrigatório)
-Cada um dos três estilos deve seguir as regras do livro de regras corretamente, utilizar uma 'main' como interação com o usuário. (Valor 0.3)
+1. RACE SELECTION:
+   - Human: Movement 9m, no infravision, any alignment
+   - Elf: Movement 9m, infravision 18m, neutral tendency
+   - Dwarf: Movement 6m, infravision 18m, order
+   - Gnome: Movement 6m, infravision 18m, neutral
+   - Halfling: Movement 6m, no infravision, neutral
+   - Half-Elf: Movement 9m, infravision 9m, chaos
 
+2. CLASS SELECTION:
+   - Warrior: Hit dice 1d10, all weapons and armor
+   - Mage: Hit dice 1d4, only daggers and staffs, no armor
+   - Paladin: Hit dice 1d10, all weapons and armor
 
-Entrega: Enviar o link do GitHub com o código
+3. ATTRIBUTE DISTRIBUTION SYSTEMS:
+   - Classic: Fixed attributes in order STR, DEX, CON, INT, WIS, CHA
+   - Heroic: Free choice of values for each attribute
+   - Adventurer: Free choice of values for each attribute
 
-3 de 6
-rola 6 vezes pra cada atributo
+HOW TO USE:
+1. Run the game with: python run.py
+2. Choose option [1] - Create Complete Character
+3. Enter the character's name
+4. Select race (1-6)
+5. Select class (1-3)
+6. Choose attribute distribution style
+7. Roll dice and distribute attributes
+8. View the complete character created
+9. **Press 0 to return to main menu**
+
+IMPORTANT: After creating a character, you must press 0 to return to the main menu and continue using the system.
+
+Evaluation Criteria:
+
+Use object orientation to organize the code, classes with specific roles, functions (methods) that have unique and clear responsibilities. (Value 0.2)
+Use Python language (Mandatory requirement)
+Each of the three styles must correctly follow the rulebook rules, use a 'main' as user interaction. (Value 0.3)
+
+Delivery: Send the GitHub link with the code
+
+3 of 6
+roll 6 times for each attribute
+
+Develop in Python, using object-oriented concepts, the rules for character creation considering:
+
+Attribute definition: Implement the 3 forms of character attribute distribution (classic, heroic and adventurer) (same logic as the previous activity, which didn't need to be presented)
+Races: Allow a character to have a race, consider that there are 3 common characteristics (movement, infravision and alignment) that only change in value, and abilities that vary from race to race, consider them in your architecture.
+Classes: Implement at least three classes (it's not mandatory to implement all) from those available in the book for character creation, respecting the defined rules.
+
+Evaluation Criteria:
+
+Mandatory: Implement all the above guidelines (attributes, races and 3 chosen classes), it will be evaluated whether the rule was implemented correctly.
+Mandatory: Use object orientation (don't put all the code in the same file using a switch case for example)
+The weights will be equal for each item, the grade will be assigned only from code defense to the professor, where the student must explain how the code works.
+
+Code delivery and defense:
+
+The defense will be held on 08/25/2025.
+Deliver via GitHub, send the link here on blackboard.
