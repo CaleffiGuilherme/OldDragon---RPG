@@ -108,20 +108,6 @@ rpg/src/python/
 - ✅ **Proper user flow control and navigation**
 - ✅ **Enhanced user experience with natural timing**
 
-## 📚 Technical Documentation
-
-- **`ARQUITETURA.md`**: Detailed explanation of the new architecture
-- **`ARQUITETURA_COMPLETA.md`**: **Complete project architecture documentation**
-- **`COMO_USAR.md`**: Complete usage guide
-- **`instrucoes.txt`**: Project instructions
-
-## 🚀 Implemented Improvements
-
-### ✅ **Complete Refactoring**
-- Monolithic methods broken into smaller methods
-- Well-defined responsibilities for each method
-- More readable and maintainable code
-
 ### ✅ **Structural Organization**
 - Clear separation between interface and logic
 - Well-organized private methods
@@ -134,11 +120,6 @@ rpg/src/python/
 - **Natural timing and pacing**
 - **Smooth transitions between steps**
 
-### ✅ **Documentation**
-- Docstrings in all methods
-- Explanatory comments where necessary
-- Technical documentation files
-
 ## 🚀 Future Improvements
 
 - Character saving system
@@ -148,10 +129,3 @@ rpg/src/python/
 - Combat system
 - **Automated unit tests**
 - **Logging system**
-
----
-
-**Developed for OldDragon RPG course**  
-*Delivery date: 08/25/2025*
-
-**🎉 Code refactored and organized following best development practices!**
