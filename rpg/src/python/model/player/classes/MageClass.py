@@ -7,5 +7,5 @@ class Mage(ClassBase):
             "HitDice": "1d4 per level",
             "Weapons": "Daggers, Staffs",
             "Armor": "None",
-            "Special": "Magic spells, grimório"
+            "Special": "Magic spells, Grimory"
         }   

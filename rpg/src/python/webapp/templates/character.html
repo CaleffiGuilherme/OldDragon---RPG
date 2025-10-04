@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Create Character</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='css/imgs/dragonicon.png') }}"  type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <nav class="navbar bg-body-black">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('index') }}">
+          <img src="{{ url_for('static', filename='css/imgs/dragonicon.png') }}" alt="Dragon Icon" class="dragon-icon">
+          OldDragon
+        </a>
+      </div>
+    </nav>
+    <div class="container">
+    <p><a class="btn btn-outline" href="{{ url_for('index') }}">Back</a></p>
+    <h2>⚔️ Create Complete Character</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for m in messages %}
+            <li style="color:red;">{{ m }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <h3>Step 1: Setup</h3>
+    <form method="post">
+      <input type="hidden" name="step" value="setup" />
+      <div>
+        <label>Name: <input type="text" name="name" required /></label>
+      </div>
+      <div>
+        <label>Race:
+          <select name="race" required>
+            {% for key, pair in races.items() %}
+              <option value="{{ key }}">{{ pair[0] }}</option>
+            {% endfor %}
+          </select>
+        </label>
+      </div>
+      <div>
+        <label>Class:
+          <select name="char_class" required>
+            {% for key, pair in classes.items() %}
+              <option value="{{ key }}">{{ pair[0] }}</option>
+            {% endfor %}
+          </select>
+        </label>
+      </div>
+      <div>
+        <label>Style:
+          <select name="style">
+            <option value="classic">Classic</option>
+            <option value="heroic">Heroic</option>
+            <option value="adventurer">Adventurer</option>
+          </select>
+        </label>
+      </div>
+      <button type="submit">Roll 6 values</button>
+    </form>
+
+    {% if show_assign and rolls %}
+      <h3>Step 2: Assign</h3>
+      <p>Style: {{ style }} | Rolls: {{ rolls }}</p>
+      {% if remaining_values %}
+        <p>Remaining values: {{ remaining_values }}</p>
+      {% endif %}
+      
+      {% if style=='classic' %}
+        <p>Classic style - attributes will be assigned automatically in order.</p>
+        <form method="post">
+          <input type="hidden" name="step" value="assign" />
+          <button type="submit">Create Character</button>
+        </form>
+      {% else %}
+        {% if assigned %}
+          <h4>Assigned so far:</h4>
+          <ul>
+            {% for attr, value in assigned.items() %}
+              <li>{{ attr }}: {{ value }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        
+        {% if remaining_values %}
+          <form method="post">
+            <input type="hidden" name="step" value="assign" />
+            <div>
+              <label>Attribute:
+                <select name="assign_attr">
+                  {% for attr in ATTRIBUTE_ORDER %}
+                    {% if attr not in assigned %}
+                      <option value="{{ attr }}">{{ attr }}</option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+              </label>
+            </div>
+            <div>
+              <label>Value:
+                <select name="value">
+                  {% for v in remaining_values %}
+                    <option value="{{ v }}">{{ v }}</option>
+                  {% endfor %}
+                </select>
+              </label>
+            </div>
+            <button type="submit">Assign</button>
+          </form>
+        {% endif %}
+      {% endif %}
+    {% endif %}
+
+    {% if character_description %}
+      <hr />
+      {% if character_view %}
+        <div class="card">
+          <h3>{{ character_view.name }}</h3>
+          <p class="muted">{{ character_view.race_name }} • {{ character_view.class_name }}</p>
+          <div class="row">
+            <div class="col">
+              <h4>Attributes</h4>
+              <ul>
+                {% for attr in ATTRIBUTE_ORDER %}
+                  <li><strong>{{ attr }}</strong>: {{ character_view.attributes[attr] }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="col">
+              <h4>Race Traits</h4>
+              <ul>
+                <li><strong>Movement</strong>: {{ character_view.race_info['Movement'] }}</li>
+                <li><strong>Infravision</strong>: {{ 'Yes' if character_view.race_info['Infravision'] else 'No' }}</li>
+                <li><strong>Alignment</strong>: {{ character_view.race_info['Alignment'] }}</li>
+                <li><strong>Abilities</strong>: {{ character_view.race_info['Abilities'] | join(', ') }}</li>
+              </ul>
+            </div>
+            <div class="col">
+              <h4>Class Features</h4>
+              <ul>
+                <li><strong>Hit Dice</strong>: {{ character_view.class_info['HitDice'] }}</li>
+                <li><strong>Weapons</strong>: {{ character_view.class_info['Weapons'] }}</li>
+                <li><strong>Armor</strong>: {{ character_view.class_info['Armor'] }}</li>
+                <li><strong>Special</strong>: {{ character_view.class_info['Special'] }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      {% else %}
+        <pre>{{ character_description }}</pre>
+      {% endif %}
+    {% endif %}
+
+    {% if error %}
+      <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    </div>
+  </body>
+</html>
+
+
