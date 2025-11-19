@@ -20,6 +20,7 @@ from model.player.races.HalfElfRace import HalfElf
 from model.player.classes.WarriorClass import Warrior
 from model.player.classes.MageClass import Mage
 from model.player.classes.PaladinClass import Paladin
+from database.save_character import save_character_to_json
 
 
 app = Flask(__name__)
@@ -163,6 +164,7 @@ def character():
                         char_class=class_obj,
                     )
                     character_description = character_obj.description()
+                    # Prepare the view data first
                     character_view = {
                         "name": name,
                         "race_name": race_obj.__class__.__name__,
@@ -171,6 +173,15 @@ def character():
                         "race_info": race_obj.traits(),
                         "class_info": class_obj.features(),
                     }
+                    # Save character instance to JSON (not fatal on failure)
+                    try:
+                        save_path = save_character_to_json(character_obj)
+                        # expose save path to template
+                        character_view["save_path"] = save_path
+                    except Exception as exc:
+                        # Save failure is not fatal; show flash to notify user
+                        flash(f"Could not save character: {exc}")
+                        character_view["save_path"] = None
 
                     for key in [
                         "char_name",
