@@ -1,0 +1,28 @@
+{
+    "name": "Krav",
+    "strength": 13,
+    "dexterity": 15,
+    "constitution": 14,
+    "intelligence": 14,
+    "wisdom": 13,
+    "charisma": 12,
+    "race": "Dwarf",
+    "char_class": "Paladin",
+    "race_info": {
+        "Movement": "6m",
+        "Infravision": "18m",
+        "Alignment": "Order",
+        "Abilities": [
+            "Miners",
+            "Vigorous",
+            "Large Weapons",
+            "Enemies"
+        ]
+    },
+    "class_info": {
+        "HitDice": "1d10 per level",
+        "Weapons": "All",
+        "Armor": "All",
+        "Special": "Lay on hands, detect evil, immunity to disease, aura of protection"
+    }
+}

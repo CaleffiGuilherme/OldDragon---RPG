@@ -1,0 +1,26 @@
+{
+    "name": "Karlos",
+    "strength": 7,
+    "dexterity": 6,
+    "constitution": 8,
+    "intelligence": 6,
+    "wisdom": 10,
+    "charisma": 10,
+    "race": "Human",
+    "char_class": "Warrior",
+    "race_info": {
+        "Movement": "9m",
+        "Infravision": false,
+        "Alignment": "Any",
+        "Abilities": [
+            "Learning",
+            "Adaptability"
+        ]
+    },
+    "class_info": {
+        "HitDice": "1d10 per level",
+        "Weapons": "All",
+        "Armor": "All",
+        "Special": "Better attack progression, physical resistance"
+    }
+}

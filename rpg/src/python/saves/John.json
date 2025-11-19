@@ -1,0 +1,26 @@
+{
+    "name": "John",
+    "strength": 10,
+    "dexterity": 8,
+    "constitution": 11,
+    "intelligence": 10,
+    "wisdom": 14,
+    "charisma": 11,
+    "race": "Human",
+    "char_class": "Paladin",
+    "race_info": {
+        "Movement": "9m",
+        "Infravision": false,
+        "Alignment": "Any",
+        "Abilities": [
+            "Learning",
+            "Adaptability"
+        ]
+    },
+    "class_info": {
+        "HitDice": "1d10 per level",
+        "Weapons": "All",
+        "Armor": "All",
+        "Special": "Lay on hands, detect evil, immunity to disease, aura of protection"
+    }
+}
