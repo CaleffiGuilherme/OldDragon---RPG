@@ -11,6 +11,7 @@ from model.player.classes.WarriorClass import Warrior
 from model.player.classes.MageClass import Mage
 from model.player.classes.PaladinClass import Paladin
 from model.player.CharacterBase import CharacterBase
+from database.save_character import save_character_to_json
 
 class GameSystem:
     def __init__(self, exit_number: int = 0):
@@ -34,7 +35,6 @@ class GameSystem:
         }
 
     def run(self) -> None:
-        """Main method that runs the game"""
         self._show_welcome()
         
         while True:
@@ -263,10 +263,14 @@ Art by                       `:.`---.__         `-._
         print(f"\n=== CHARACTER CREATED SUCCESSFULLY! ===")
         time.sleep(0.5)
         print(character.description())
+        try:
+            saved_path = save_character_to_json(character)
+            print(f"Character saved to: {saved_path}")
+        except Exception as exc:
+            print(f"Could not save character: {exc}")
         print()
         time.sleep(1)
         
-        # Wait for user to press 0 to return to main menu
         while True:
             user_input = input(f"Press {self.exit_token} to return to main menu: ").strip()
             if user_input == self.exit_token:

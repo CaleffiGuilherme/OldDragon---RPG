@@ -67,7 +67,6 @@ class AttributeRoller:
         return {attr: values[idx] for idx, attr in enumerate(ATTRIBUTE_ORDER)}
 
     def get_attribute_condition(self, attribute: str, value: int) -> str:
-        """Get the condition description for an attribute value."""
         if attribute not in ATTRIBUTE_CONDITIONS:
             return "Unknown"
         
@@ -77,9 +76,7 @@ class AttributeRoller:
         
         return "Unknown"
 
-    def get_all_attribute_conditions(self, attributes: Dict[str, int]) -> Dict[str, str]:
-        """Get condition descriptions for all attributes."""
-        return {
+    def get_all_attribute_conditions(self, attributes: Dict[str, int]) -> Dict[str, str]:        return {
             attr: self.get_attribute_condition(attr, value) 
             for attr, value in attributes.items()
         }

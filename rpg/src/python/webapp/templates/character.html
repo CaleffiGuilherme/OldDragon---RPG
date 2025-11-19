@@ -154,6 +154,11 @@
             </div>
           </div>
         </div>
+        {% if character_view.save_path %}
+          <div style="margin-top:10px;">
+            <strong>Saved JSON:</strong> <span>{{ character_view.save_path }}</span>
+          </div>
+        {% endif %}
       {% else %}
         <pre>{{ character_description }}</pre>
       {% endif %}
